@@ -1,0 +1,8 @@
+select name from User;
+select * from Tweet where UserID=<userId> order by creationTime Desc;
+select count(*) from Like where TweetID=<tweetId>;
+select count(*) from ReTweet where TweetID=<tweetId>;
+select count(*) from Tweet where ParentTweetID=<tweetId>;
+select u.name from User u JOIN ReTweet r ON u.UserID=r.ReTweetID where r.ReTweetID=<Id>;
+select content from Tweet where ParentTweetID=<Id>;
+select t.content, u.name from Tweet t JOIN User u ON t.UserID=u.UserID where t.UserID IN(select followedID from Follow where followerID=<Id>) ORDER BY t.CreationTime Desc;
